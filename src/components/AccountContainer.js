@@ -7,10 +7,12 @@ function AccountContainer() {
   const [transactions,setTransactions] = useState([])
   const [keyword,setKeyword] = useState([])
 
+  // If keyword has been set, filter by description
   const matching = transactions.filter((transaction) => {
-    return keyword == '' || transaction.description.indexOf(keyword) !== -1;
+    return keyword === '' || transaction.description.indexOf(keyword) !== -1;
   })
 
+  // Fetch once when component renders
   useEffect(() => {
     fetch('http://localhost:8001/transactions')
       .then((response) => response.json())

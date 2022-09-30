@@ -8,10 +8,11 @@ function AddTransactionForm({transactions, setTransactions}) {
     category: '',
   })
 
+  // Feedback message after adding a transaction
+  const [message, setMessage] = useState('')
+
   function handleAddTransaction(event){
     event.preventDefault();
-
-    setTransactions([...transactions, formData])
 
     fetch('http://localhost:8001/transactions', {
       method: 'POST',
@@ -21,8 +22,21 @@ function AddTransactionForm({transactions, setTransactions}) {
       },
       body: JSON.stringify(formData)
     })
-    .then(() => {
-      setFormData({})
+    .then((resp) => resp.json())
+    .then((object) => {
+      // Feedback
+      setMessage('Transaction added successfully')
+
+      // Add transaction to list
+      setTransactions([...transactions, object])
+
+      // Clear form
+      setFormData({
+        date: '',
+        description: '',
+        amount: '',
+        category: '',
+      })
     })
   }
 
@@ -44,6 +58,7 @@ function AddTransactionForm({transactions, setTransactions}) {
 
   return (
     <div className="ui segment">
+      <span>{message}</span>
       <form className="ui form" onSubmit={handleAddTransaction}>
         <div className="inline fields">
           <input type="date" name="date" value={formData.date} onChange={handleDateChange} />
