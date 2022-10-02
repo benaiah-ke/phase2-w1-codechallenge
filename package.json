@@ -1,5 +1,6 @@
 {
   "name": "react-hooks-bank-of-flatiron-code-challenge",
+  "homepage": "http://benaiah.ehouse.co.ke/phase2-w1-codechallenge",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

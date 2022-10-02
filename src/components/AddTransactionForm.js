@@ -14,7 +14,7 @@ function AddTransactionForm({transactions, setTransactions}) {
   function handleAddTransaction(event){
     event.preventDefault();
 
-    fetch('http://localhost:8001/transactions', {
+    fetch('http://http://benaiah.ehouse.co.ke/flatironbank/phase2-w1-codechallenge/transactions', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
