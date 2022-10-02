@@ -14,7 +14,7 @@ function AccountContainer() {
 
   // Fetch once when component renders
   useEffect(() => {
-    fetch('http://benaiah.ehouse.co.ke/flatironbank/phase2-w1-codechallenge/transactions')
+    fetch('http://benaiah.ehouse.co.ke/flatiron-bank/transactions')
       .then((response) => response.json())
       .then((response) => {
         setTransactions(response);
